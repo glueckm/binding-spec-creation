@@ -379,13 +379,43 @@ if __name__ == "__main__" :
     import argparse
     fakeclib = str (Path ("fake_libc_include"))
     parser   = argparse.ArgumentParser ()
-    parser.add_argument ("cache", type = str, default = "ncache.json")
-    parser.add_argument ("--gcc", type = str, default = "gcc")
-    parser.add_argument ("--fake-include", type = str, default = fakeclib)
-    parser.add_argument ("-c", "--config", type = str, default = "lv_configs")
-    parser.add_argument ("-b", "--lvgl-base", type = str, default = "../lvgl")
-    parser.add_argument ("-s", "--start-header-file", type = str, default = "lvgl.h")
-    parser.add_argument ("--load-parents", type = str )
+    parser.add_argument \
+        ( "cache",                      type    = str
+        , help    = "Filename for the resulting json file"
+        )
+    parser.add_argument \
+        ( "--gcc",                      type = str, default = "gcc"
+        , help = "Executable which should be used for preprocessing the files "
+                 "before sent to the pycparser."
+        )
+    parser.add_argument \
+        ( "--fake-include",             type = str, default = fakeclib
+        , help = "A path to a directory containing fake include files for the "
+                 "system include files normally provided by teh compiler.\n"
+                 "Fake includes files a required because pycparser cannot "
+                 "parse the original system includes"
+        )
+    parser.add_argument \
+        ( "-c", "--config",             type = str, default = "lv_configs"
+        , help = "Path to a directory containing a lv_conf.h file"
+        )
+    parser.add_argument \
+        ( "-b", "--lvgl-base",          type = str, default = "../lvgl"
+        , help = "Root directory for the lvgl source code"
+        )
+    parser.add_argument \
+        ( "-s", "--start-header-file",  type = str, default = "../lvgl/lvgl.h"
+        , help = "Full path to the header file which will be used as the start "
+                 "file for parsing."
+        )
+    parser.add_argument \
+        ( "--load-parents", type = str
+        , help = "Preload the widget parent information from this file to "
+                 "speedup the parsing.\n"
+                 "If this file name is not provided the script will not only "
+                 "parse the header files but also the C files to extract the "
+                 "parent classes for widget definitions."
+        )
     cmd    = parser.parse_args ()
     Parser.Include_Path.append (cmd.fake_include)
     if cmd.gcc :
@@ -401,8 +431,6 @@ if __name__ == "__main__" :
         with open (cmd.load_parents) as f :
             Cache = json.load (f)
             Parser.Cache ["Widget_Base"] = Cache.get ("Widget_Base", {})
-    p  = Parser ( Path (cmd.start_header_file)
-#                , lv_s_base / "libs/fsdrv/lv_fsdrv.h"
-                )
+    p  = Parser ( Path (cmd.start_header_file))
     if cmd.cache :
         p.save_cache (cmd.cache)
