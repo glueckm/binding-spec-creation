@@ -322,7 +322,7 @@
 
 /*Export integer constant to binding. This macro is used with constants in the form of LV_<CONST> that
  *should also appear on LVGL binding API such as Micropython.*/
-#define LV_EXPORT_CONST_INT(int_value)  enum {ENUM_##int_value = int_value}
+#define LV_EXPORT_CONST_INT(int_value)  const int32_t CONST_##int_value = int_value
 
 /*Extend the default -32k..32k coordinate range to -4M..4M by using int32_t for coordinates instead of int16_t*/
 #define LV_USE_LARGE_COORD 1

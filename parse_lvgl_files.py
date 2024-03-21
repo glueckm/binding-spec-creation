@@ -21,7 +21,8 @@ class Parser :
         , "Variables"    : {}
         , "Functions"    : {}
         , "Unions"       : {}
-        , "Widget_Base"  : {}
+        , "Class_Base"   : {}
+        , "Classes"      : {}
         }
 
     def __init__ (self, lvgl_api, * files) :
@@ -44,7 +45,189 @@ class Parser :
                         else :
                             print (f"No handler for {hname}")
             self._find_widgets ()
+        self._identify_classes             ()                
+        self._assign_functions_to_classes  ()
+        self._check_enums                  ()
     # end def __init__
+
+    def _identify_classes (self) :
+        Classes = self.Cache ["Classes"]
+        for t in self.Cache ["Types"].values () :
+            if t ["Is_Struct"] :
+                name        = t ["name"]
+                widget_name = name [3:-2]
+                if widget_name not in Classes :
+                    Classes [name [3:]] = { "base_class" : None
+                                          , "c_type"     : name
+                                          , "is_widget"  : False
+                                          , "file"       : t ["file"]
+                                          }
+    # end def _identify_classes
+    
+    def _is_method (self, fspec, class_name, base_class, widget = None) :
+        result      = False
+        fargs       = fspec ["args"]
+        if len (fargs) >= 1 :
+            at          = tuple (fargs.values ()) [0]
+            if at.endswith ("*") :
+                at = at [:-1].strip ()
+            pos_types   = set ()
+            for ct in class_name, base_class, widget :
+                if not ct : continue
+                ct = f"lv_{ct}_t"
+                pos_types.add (ct)
+                if ct.startswith ("const") :
+                    pos_types.add (ct [6:])
+                    pos_types.add (f"struct _{ct [6:]}")
+                else :
+                    pos_types.add (f"const {ct}")
+                    pos_types.add (f"struct _{ct}")
+                    pos_types.add (f"const struct _{ct}")
+            result = at in pos_types
+        fspec ["is_method"] = result
+        return result
+    # end def _is_method
+
+    def _assign_functions_to_classes (self) :
+        Classes     = self.Cache ["Classes"]
+        Functions   = self.Cache ["Functions"]
+        Types       = self.Cache ["Types"]
+        ## sorting by negative len assures that the longest type name is matched 
+        ## first
+        pat         = re.compile \
+            ("^lv_(%s)_"
+            % ( "|".join (sorted ( Classes.keys ()
+                                 , key = lambda k : -len (k)
+                                 )
+                         )
+              ,
+              )
+            )
+        Stripped_Class_Names = set \
+            ( cn if not cn.endswith ("_t") else cn [:-2]
+              for cn in Classes.keys () 
+            ) 
+        self.Stripped_Class_Name_Pat = re.compile \
+            ("^lv_(%s)_"
+            % ( "|".join (sorted ( Stripped_Class_Names
+                                 , key = lambda k : -len (k)
+                                 )
+                         )
+              ,
+              )
+            )
+        funcs = tqdm (Functions.items ())
+        for f, fspec in funcs :
+            funcs.set_description (f"Check {f:30}")
+            cm         = pat.search (f)
+            if cm :
+                class_name          = cm.group (1)
+                fspec ["part_of"]   = class_name
+                cspec               = Classes [class_name]
+                if "properties" not in cspec :
+                    cspec ["properties"] = P = {}
+                    SF = Types.get \
+                        (cspec ["c_type"], {}).get ("Struct_Fields", {})
+                    for n, t in SF.items () :
+                        P [n] = { "c_type" : t}
+                is_method           = self._is_method \
+                    ( fspec
+                    , class_name
+                    , cspec ["base_class"]
+                    , "obj" if cspec.get ("is_widget") else None
+                    )
+                key = "methods" if is_method else "class_functions"
+                cspec.setdefault (key, []).append (f)
+                is_add_event        = False
+                for at in fspec ["args"].values () :
+                    if at == "lv_event_cb_t" :
+                        for s in ("_add_event_cb", "_event_add") :
+                            if f.endswith (s) :
+                                is_add_event = f [:-len (s)]
+                                break
+                if is_add_event :
+                    head = is_add_event
+                    get_event_count = f"{head}_get_event_count"
+                    get_event_dsc   = f"{head}_get_event_dsc"
+                    if (   get_event_count in Functions
+                       and get_event_dsc   in Functions
+                       ) :
+                        is_add_event = (get_event_count, get_event_dsc)
+                    else :
+                        is_add_event = f != "lv_event_add"
+                fspec ["is_add_event"] = is_add_event
+                if is_add_event != False :
+                    cspec ["has_events"]   = True
+                if is_method :
+                    args    = fspec ["args"]
+                    fget    = f"lv_{class_name}_get_"
+                    fset    = f"lv_{class_name}_set_"
+                    props   = cspec ["properties"]
+                    n       = f [len (fget):]
+                    if   (len (args) == 1) and  f.startswith (fget) :
+                        props.setdefault (n, {}) ["get"] = f
+                    elif (len (args) == 2) and  f.startswith (fset) :
+                        props.setdefault (n, {}) ["set"] = f
+                if f.endswith ("_create") :
+                    cspec ["constructor"] = f
+                    fspec ["constructor"] = class_name
+    # end def _assign_functions_to_classes
+
+    def _check_enums (self) :
+        Enums       = self.Cache ["Enums"]
+        Types       = self.Cache ["Types"]
+        Classes     = self.Cache ["Classes"]
+        for tn, tspec in Types.items () :
+            espec = Enums.get (tn)
+            if espec :
+                tspec ["Is_Enum"] = espec
+        for en, espec in Enums.items () :
+            v = tuple (espec ["values"].values ()) [0]
+            if isinstance (v, str) :
+                p = re.compile (r"(\d+)L\s*<<")
+                if v.endswith ("U") :
+                    v = v [:-1]
+                try :
+                    v = p.sub (r"\1 <<", v)
+                    v = eval (v)
+                except :
+                    pass
+            espec ["int-values"] = not isinstance (v, str)
+            cm = self.Stripped_Class_Name_Pat.search (en.lower ())
+            if cm :
+                class_name          = cm.group (1)
+            else :
+                class_name          = None
+            if class_name :
+                cspec               = Classes.get (class_name)
+                if not cspec :
+                    class_name      =f"{class_name}_t"
+                    cspec           = Classes [class_name]
+                cspec.setdefault ("enums", []).append (en)
+            espec ["part_of"]       = class_name
+            values = {}
+            for n, v in espec ["values"].items () :
+                if not n.startswith ("_") :
+                    values [n] = v
+            if not values : ### this is the symbol enum
+                for n, v in espec ["values"].items () :
+                    if n.startswith ("_") :
+                        values [n] = v
+            en = os.path.commonprefix (tuple (values.keys ())).strip ("_") [3:]
+            if not en :
+                en = en.strip ("_") [3:-2].upper ()
+            py_name = en
+            if class_name and class_name.endswith ("_t") :
+                class_name = class_name [:-2]
+            if class_name and en.startswith (class_name.upper ()) :
+                py_name = en [len (class_name) + 1:]
+                if len (py_name) < 3 :
+                    if py_name :
+                        en = en [:-1-len (py_name)]
+                    py_name = ""
+            espec ["common_after_class_name"] = py_name
+    # end def _check_enums
+
 
     def save_cache (self, file_name) :
         fn = Path (file_name)
@@ -58,7 +241,7 @@ class Parser :
             json.dump (C, f, indent = 2)
             print ("Cache saved to file %s" % fn)
             for k, v in self.Cache.items () :
-                print (" - %-20s: %3d" % (k, len (v)))
+                print (" - %-20s: %4d" % (k, len (v)))
     # end def save_cache
 
     @classmethod
@@ -133,6 +316,7 @@ class Parser :
                 , name          = Key
                 , Is_Function   = Is_Function
                 , Struct_Fields = SF
+                , Is_Struct     = type and isinstance (type, c_ast.Struct)
                 , Is_Enum       = type and isinstance (type, c_ast.Enum)
                 , Is_Union      = type and isinstance (type, c_ast.Union)
                 , ** add
@@ -245,7 +429,7 @@ class Parser :
 
     def _find_widgets (self) :
         cls_name_pat = re.compile ("lv_(.+)_class")
-        self.Cache ["Widgets"] = {}
+        self.Cache ["Classes"] = {}
         vars = tqdm (self.Cache ["Variables"].values (), miniters = 1)
         for v in vars :
             if v ["type_name"] == "lv_obj_class_t" :
@@ -253,7 +437,7 @@ class Parser :
                 if m := cls_name_pat.search (name) :
                     vars.set_description (f"Found class {name:50}")
                     c_file          = Path (v ["file"]).with_suffix (".c")
-                    if name not in self.Cache ["Widget_Base"] :
+                    if name not in self.Cache ["Class_Base"] :
                         cls_var     = self._find_variable (c_file, v ["name"])
                         base_class  = self._get_initializer \
                             (cls_var, "base_class").replace ("&", "").strip ()
@@ -262,14 +446,16 @@ class Parser :
                         else :
                             base_class = base_class [3:-6]
                     else :
-                        base_class = self.Cache ["Widget_Base"] [name]
+                        base_class = self.Cache ["Class_Base"] [name]
                     cls_name    = m.group (1)
                     directory   = str (c_file.parent)
                     cls_def  = { "base_class"       : base_class
+                               , "c_type"           : f"lv_{cls_name}_t"
+                               , "is_widget"        : True
                                , "directory"        : directory
                                }
-                    self.Cache ["Widgets"] [cls_name] = cls_def
-                    self.Cache ["Widget_Base"] [name] = base_class
+                    self.Cache ["Classes"] [cls_name] = cls_def
+                    self.Cache ["Class_Base"] [name]  = base_class
                 else :
                     print ("No class found", name)
     # end def _find_widgets
@@ -347,6 +533,7 @@ class Parser :
         cpp_args.extend (inc_files)
         cpp_args.extend ( ( "-D__attribute__(x)"
                           , "-DPYCPARSER"
+                          #, "-DDOXYGEN"
                           , "-DLV_CONF_INCLUDE_SIMPLE"
                           , "-Wno-microsoft-include"
                           )
@@ -430,7 +617,7 @@ if __name__ == "__main__" :
     if cmd.load_parents :
         with open (cmd.load_parents) as f :
             Cache = json.load (f)
-            Parser.Cache ["Widget_Base"] = Cache.get ("Widget_Base", {})
+            Parser.Cache ["Class_Base"] = Cache.get ("Class_Base", {})
     p  = Parser ( Path (cmd.start_header_file))
     if cmd.cache :
         p.save_cache (cmd.cache)
