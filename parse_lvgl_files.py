@@ -67,6 +67,8 @@ class Parser :
     def _is_method (self, fspec, class_name, base_class, widget = None) :
         result      = False
         fargs       = fspec ["args"]
+        if class_name.endswith ("_t") :
+            class_name = class_name [:-2]
         if len (fargs) >= 1 :
             at          = tuple (fargs.values ()) [0]
             if at.endswith ("*") :
@@ -119,11 +121,13 @@ class Parser :
         funcs = tqdm (Functions.items ())
         for f, fspec in funcs :
             funcs.set_description (f"Check {f:30}")
-            cm         = pat.search (f)
+            cm         = self.Stripped_Class_Name_Pat.search (f)
             if cm :
                 class_name          = cm.group (1)
                 fspec ["part_of"]   = class_name
-                cspec               = Classes [class_name]
+                cspec               = Classes.get (class_name)
+                if not cspec :
+                    cspec           = Classes.get (f"{class_name}_t")
                 if "properties" not in cspec :
                     cspec ["properties"] = P = {}
                     SF = Types.get \
@@ -164,6 +168,7 @@ class Parser :
                     fset    = f"lv_{class_name}_set_"
                     props   = cspec ["properties"]
                     n       = f [len (fget):]
+                    if f == "lv_area_get_width" : breakpoint ()
                     if   (len (args) == 1) and  f.startswith (fget) :
                         props.setdefault (n, {}) ["get"] = f
                     elif (len (args) == 2) and  f.startswith (fset) :
@@ -227,7 +232,6 @@ class Parser :
                     py_name = ""
             espec ["common_after_class_name"] = py_name
     # end def _check_enums
-
 
     def save_cache (self, file_name) :
         fn = Path (file_name)
