@@ -168,11 +168,14 @@ class Parser :
                     fset    = f"lv_{class_name}_set_"
                     props   = cspec ["properties"]
                     n       = f [len (fget):]
-                    if f == "lv_area_get_width" : breakpoint ()
                     if   (len (args) == 1) and  f.startswith (fget) :
-                        props.setdefault (n, {}) ["get"] = f
+                        if n not in props :
+                            props [n] = {"computed" : True}
+                        props [n] ["get"] = f
                     elif (len (args) == 2) and  f.startswith (fset) :
-                        props.setdefault (n, {}) ["set"] = f
+                        if n not in props :
+                            props [n] = {"computed" : True}
+                        props [n] ["set"] = f
                 if f.endswith ("_create") :
                     cspec ["constructor"] = f
                     fspec ["constructor"] = class_name

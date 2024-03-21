@@ -65,126 +65,163 @@
       "directory": "D:\\sandbox\\iSEW\\lvgl\\src\\core",
       "properties": {
         "flex_flow": {
+          "computed": true,
           "set": "lv_obj_set_flex_flow"
         },
         "flex_grow": {
+          "computed": true,
           "set": "lv_obj_set_flex_grow"
         },
         "parent": {
+          "computed": true,
           "set": "lv_obj_set_parent",
           "get": "lv_obj_get_parent"
         },
         "screen": {
+          "computed": true,
           "get": "lv_obj_get_screen"
         },
         "display": {
+          "computed": true,
           "get": "lv_obj_get_display"
         },
         "child_count": {
+          "computed": true,
           "get": "lv_obj_get_child_count"
         },
         "index": {
+          "computed": true,
           "get": "lv_obj_get_index"
         },
         "x": {
+          "computed": true,
           "set": "lv_obj_set_x",
           "get": "lv_obj_get_x"
         },
         "y": {
+          "computed": true,
           "set": "lv_obj_set_y",
           "get": "lv_obj_get_y"
         },
         "width": {
+          "computed": true,
           "set": "lv_obj_set_width",
           "get": "lv_obj_get_width"
         },
         "height": {
+          "computed": true,
           "set": "lv_obj_set_height",
           "get": "lv_obj_get_height"
         },
         "content_width": {
+          "computed": true,
           "set": "lv_obj_set_content_width",
           "get": "lv_obj_get_content_width"
         },
         "content_height": {
+          "computed": true,
           "set": "lv_obj_set_content_height",
           "get": "lv_obj_get_content_height"
         },
         "layout": {
+          "computed": true,
           "set": "lv_obj_set_layout"
         },
         "align": {
+          "computed": true,
           "set": "lv_obj_set_align"
         },
         "x2": {
+          "computed": true,
           "get": "lv_obj_get_x2"
         },
         "y2": {
+          "computed": true,
           "get": "lv_obj_get_y2"
         },
         "x_aligned": {
+          "computed": true,
           "get": "lv_obj_get_x_aligned"
         },
         "y_aligned": {
+          "computed": true,
           "get": "lv_obj_get_y_aligned"
         },
         "self_width": {
+          "computed": true,
           "get": "lv_obj_get_self_width"
         },
         "self_height": {
+          "computed": true,
           "get": "lv_obj_get_self_height"
         },
         "ext_click_area": {
+          "computed": true,
           "set": "lv_obj_set_ext_click_area"
         },
         "scrollbar_mode": {
+          "computed": true,
           "set": "lv_obj_set_scrollbar_mode",
           "get": "lv_obj_get_scrollbar_mode"
         },
         "scroll_dir": {
+          "computed": true,
           "set": "lv_obj_set_scroll_dir",
           "get": "lv_obj_get_scroll_dir"
         },
         "scroll_snap_x": {
+          "computed": true,
           "set": "lv_obj_set_scroll_snap_x",
           "get": "lv_obj_get_scroll_snap_x"
         },
         "scroll_snap_y": {
+          "computed": true,
           "set": "lv_obj_set_scroll_snap_y",
           "get": "lv_obj_get_scroll_snap_y"
         },
         "scroll_x": {
+          "computed": true,
           "get": "lv_obj_get_scroll_x"
         },
         "scroll_y": {
+          "computed": true,
           "get": "lv_obj_get_scroll_y"
         },
         "scroll_top": {
+          "computed": true,
           "get": "lv_obj_get_scroll_top"
         },
         "scroll_bottom": {
+          "computed": true,
           "get": "lv_obj_get_scroll_bottom"
         },
         "scroll_left": {
+          "computed": true,
           "get": "lv_obj_get_scroll_left"
         },
         "scroll_right": {
+          "computed": true,
           "get": "lv_obj_get_scroll_right"
         },
         "event_count": {
+          "computed": true,
           "get": "lv_obj_get_event_count"
         },
         "user_data": {
+          "computed": true,
           "set": "lv_obj_set_user_data",
           "get": "lv_obj_get_user_data"
         },
         "state": {
+          "computed": true,
           "get": "lv_obj_get_state"
         },
         "group": {
+          "computed": true,
           "get": "lv_obj_get_group"
         },
         "class": {
+          "computed": true,
           "get": "lv_obj_get_class"
         }
       },
@@ -662,14 +699,17 @@
           "get": "lv_image_get_blend_mode"
         },
         "offset_x": {
+          "computed": true,
           "set": "lv_image_set_offset_x",
           "get": "lv_image_get_offset_x"
         },
         "offset_y": {
+          "computed": true,
           "set": "lv_image_set_offset_y",
           "get": "lv_image_get_offset_y"
         },
         "scale": {
+          "computed": true,
           "set": "lv_image_set_scale",
           "get": "lv_image_get_scale"
         }
@@ -732,17 +772,21 @@
           "c_type": "int8_t"
         },
         "duration": {
+          "computed": true,
           "set": "lv_animimg_set_duration",
           "get": "lv_animimg_get_duration"
         },
         "repeat_count": {
+          "computed": true,
           "set": "lv_animimg_set_repeat_count",
           "get": "lv_animimg_get_repeat_count"
         },
         "src": {
+          "computed": true,
           "get": "lv_animimg_get_src"
         },
         "src_count": {
+          "computed": true,
           "get": "lv_animimg_get_src_count"
         }
       },
@@ -830,28 +874,36 @@
           "get": "lv_arc_get_knob_offset"
         },
         "start_angle": {
+          "computed": true,
           "set": "lv_arc_set_start_angle"
         },
         "end_angle": {
+          "computed": true,
           "set": "lv_arc_set_end_angle"
         },
         "bg_start_angle": {
+          "computed": true,
           "set": "lv_arc_set_bg_start_angle"
         },
         "bg_end_angle": {
+          "computed": true,
           "set": "lv_arc_set_bg_end_angle"
         },
         "mode": {
+          "computed": true,
           "set": "lv_arc_set_mode",
           "get": "lv_arc_get_mode"
         },
         "change_rate": {
+          "computed": true,
           "set": "lv_arc_set_change_rate"
         },
         "angle_start": {
+          "computed": true,
           "get": "lv_arc_get_angle_start"
         },
         "angle_end": {
+          "computed": true,
           "get": "lv_arc_get_angle_end"
         }
       },
@@ -943,13 +995,16 @@
           "c_type": "uint8_t"
         },
         "text_static": {
+          "computed": true,
           "set": "lv_label_set_text_static"
         },
         "text_selection_start": {
+          "computed": true,
           "set": "lv_label_set_text_selection_start",
           "get": "lv_label_get_text_selection_start"
         },
         "text_selection_end": {
+          "computed": true,
           "set": "lv_label_set_text_selection_end",
           "get": "lv_label_get_text_selection_end"
         }
@@ -1020,6 +1075,7 @@
           "get": "lv_bar_get_mode"
         },
         "value": {
+          "computed": true,
           "get": "lv_bar_get_value"
         }
       },
@@ -1088,24 +1144,30 @@
           "c_type": "uint32_t"
         },
         "map": {
+          "computed": true,
           "set": "lv_buttonmatrix_set_map",
           "get": "lv_buttonmatrix_get_map"
         },
         "ctrl_map": {
+          "computed": true,
           "set": "lv_buttonmatrix_set_ctrl_map"
         },
         "selected_button": {
+          "computed": true,
           "set": "lv_buttonmatrix_set_selected_button",
           "get": "lv_buttonmatrix_get_selected_button"
         },
         "button_ctrl_all": {
+          "computed": true,
           "set": "lv_buttonmatrix_set_button_ctrl_all"
         },
         "one_checked": {
+          "computed": true,
           "set": "lv_buttonmatrix_set_one_checked",
           "get": "lv_buttonmatrix_get_one_checked"
         },
         "popovers": {
+          "computed": true,
           "get": "lv_buttonmatrix_get_popovers"
         }
       },
@@ -1166,12 +1228,15 @@
           "c_type": "char [7 * 6][4]"
         },
         "day_names": {
+          "computed": true,
           "set": "lv_calendar_set_day_names"
         },
         "btnmatrix": {
+          "computed": true,
           "get": "lv_calendar_get_btnmatrix"
         },
         "today_date": {
+          "computed": true,
           "get": "lv_calendar_get_today_date"
         }
       },
@@ -1208,6 +1273,7 @@
       "directory": "D:\\sandbox\\iSEW\\lvgl\\src\\widgets\\calendar",
       "properties": {
         "year_list": {
+          "computed": true,
           "set": "lv_calendar_header_dropdown_set_year_list"
         }
       },
@@ -1235,9 +1301,11 @@
           "c_type": "lv_draw_buf_t"
         },
         "image": {
+          "computed": true,
           "get": "lv_canvas_get_image"
         },
         "buf": {
+          "computed": true,
           "get": "lv_canvas_get_buf"
         }
       },
@@ -1310,13 +1378,16 @@
           "set": "lv_chart_set_update_mode"
         },
         "point_count": {
+          "computed": true,
           "set": "lv_chart_set_point_count",
           "get": "lv_chart_get_point_count"
         },
         "pressed_point": {
+          "computed": true,
           "get": "lv_chart_get_pressed_point"
         },
         "first_point_center_offset": {
+          "computed": true,
           "get": "lv_chart_get_first_point_center_offset"
         }
       },
@@ -1377,10 +1448,12 @@
           "c_type": "uint32_t"
         },
         "text": {
+          "computed": true,
           "set": "lv_checkbox_set_text",
           "get": "lv_checkbox_get_text"
         },
         "text_static": {
+          "computed": true,
           "set": "lv_checkbox_set_text_static"
         }
       },
@@ -1446,13 +1519,16 @@
           "get": "lv_dropdown_get_selected_highlight"
         },
         "options_static": {
+          "computed": true,
           "set": "lv_dropdown_set_options_static"
         },
         "selected": {
+          "computed": true,
           "set": "lv_dropdown_set_selected",
           "get": "lv_dropdown_get_selected"
         },
         "option_count": {
+          "computed": true,
           "get": "lv_dropdown_get_option_count"
         }
       },
@@ -1509,6 +1585,7 @@
           "c_type": "lv_imagebutton_src_info_t [_LV_IMAGEBUTTON_STATE_NUM]"
         },
         "state": {
+          "computed": true,
           "set": "lv_imagebutton_set_state"
         }
       },
@@ -1547,13 +1624,16 @@
           "set": "lv_keyboard_set_popovers"
         },
         "textarea": {
+          "computed": true,
           "set": "lv_keyboard_set_textarea",
           "get": "lv_keyboard_get_textarea"
         },
         "map_array": {
+          "computed": true,
           "get": "lv_keyboard_get_map_array"
         },
         "selected_button": {
+          "computed": true,
           "get": "lv_keyboard_get_selected_button"
         }
       },
@@ -1594,6 +1674,7 @@
           "c_type": "uint8_t"
         },
         "brightness": {
+          "computed": true,
           "set": "lv_led_set_brightness",
           "get": "lv_led_get_brightness"
         }
@@ -1628,6 +1709,7 @@
           "c_type": "uint32_t"
         },
         "y_invert": {
+          "computed": true,
           "set": "lv_line_set_y_invert",
           "get": "lv_line_get_y_invert"
         }
@@ -1735,27 +1817,35 @@
           "c_type": "lv_menu_mode_root_back_button_t"
         },
         "page": {
+          "computed": true,
           "set": "lv_menu_set_page"
         },
         "page_title": {
+          "computed": true,
           "set": "lv_menu_set_page_title"
         },
         "page_title_static": {
+          "computed": true,
           "set": "lv_menu_set_page_title_static"
         },
         "mode_root_back_button": {
+          "computed": true,
           "set": "lv_menu_set_mode_root_back_button"
         },
         "cur_main_page": {
+          "computed": true,
           "get": "lv_menu_get_cur_main_page"
         },
         "cur_sidebar_page": {
+          "computed": true,
           "get": "lv_menu_get_cur_sidebar_page"
         },
         "main_header_back_button": {
+          "computed": true,
           "get": "lv_menu_get_main_header_back_button"
         },
         "sidebar_header_back_button": {
+          "computed": true,
           "get": "lv_menu_get_sidebar_header_back_button"
         }
       },
@@ -1967,15 +2057,19 @@
           "c_type": "uint32_t"
         },
         "visible_row_count": {
+          "computed": true,
           "set": "lv_roller_set_visible_row_count"
         },
         "selected": {
+          "computed": true,
           "get": "lv_roller_get_selected"
         },
         "options": {
+          "computed": true,
           "get": "lv_roller_get_options"
         },
         "option_count": {
+          "computed": true,
           "get": "lv_roller_get_option_count"
         }
       },
@@ -2057,16 +2151,20 @@
           "c_type": "int32_t"
         },
         "label_show": {
+          "computed": true,
           "set": "lv_scale_set_label_show",
           "get": "lv_scale_get_label_show"
         },
         "text_src": {
+          "computed": true,
           "set": "lv_scale_set_text_src"
         },
         "range_min_value": {
+          "computed": true,
           "get": "lv_scale_get_range_min_value"
         },
         "range_max_value": {
+          "computed": true,
           "get": "lv_scale_get_range_max_value"
         }
       },
@@ -2125,19 +2223,24 @@
           "c_type": "uint8_t"
         },
         "mode": {
+          "computed": true,
           "set": "lv_slider_set_mode",
           "get": "lv_slider_get_mode"
         },
         "value": {
+          "computed": true,
           "get": "lv_slider_get_value"
         },
         "left_value": {
+          "computed": true,
           "get": "lv_slider_get_left_value"
         },
         "min_value": {
+          "computed": true,
           "get": "lv_slider_get_min_value"
         },
         "max_value": {
+          "computed": true,
           "get": "lv_slider_get_max_value"
         }
       },
@@ -2201,17 +2304,21 @@
           "c_type": "uint32_t"
         },
         "align": {
+          "computed": true,
           "set": "lv_spangroup_set_align",
           "get": "lv_spangroup_get_align"
         },
         "max_lines": {
+          "computed": true,
           "set": "lv_spangroup_set_max_lines",
           "get": "lv_spangroup_get_max_lines"
         },
         "span_count": {
+          "computed": true,
           "get": "lv_spangroup_get_span_count"
         },
         "max_line_height": {
+          "computed": true,
           "get": "lv_spangroup_get_max_line_height"
         }
       },
@@ -2297,44 +2404,55 @@
           "get": "lv_textarea_get_one_line"
         },
         "text": {
+          "computed": true,
           "set": "lv_textarea_set_text",
           "get": "lv_textarea_get_text"
         },
         "placeholder_text": {
+          "computed": true,
           "set": "lv_textarea_set_placeholder_text",
           "get": "lv_textarea_get_placeholder_text"
         },
         "cursor_pos": {
+          "computed": true,
           "set": "lv_textarea_set_cursor_pos",
           "get": "lv_textarea_get_cursor_pos"
         },
         "cursor_click_pos": {
+          "computed": true,
           "set": "lv_textarea_set_cursor_click_pos",
           "get": "lv_textarea_get_cursor_click_pos"
         },
         "password_mode": {
+          "computed": true,
           "set": "lv_textarea_set_password_mode",
           "get": "lv_textarea_get_password_mode"
         },
         "password_bullet": {
+          "computed": true,
           "set": "lv_textarea_set_password_bullet",
           "get": "lv_textarea_get_password_bullet"
         },
         "insert_replace": {
+          "computed": true,
           "set": "lv_textarea_set_insert_replace"
         },
         "text_selection": {
+          "computed": true,
           "set": "lv_textarea_set_text_selection",
           "get": "lv_textarea_get_text_selection"
         },
         "password_show_time": {
+          "computed": true,
           "set": "lv_textarea_set_password_show_time",
           "get": "lv_textarea_get_password_show_time"
         },
         "align": {
+          "computed": true,
           "set": "lv_textarea_set_align"
         },
         "current_char": {
+          "computed": true,
           "get": "lv_textarea_get_current_char"
         }
       },
@@ -2419,9 +2537,11 @@
           "c_type": "uint32_t"
         },
         "cursor_pos": {
+          "computed": true,
           "set": "lv_spinbox_set_cursor_pos"
         },
         "digit_step_direction": {
+          "computed": true,
           "set": "lv_spinbox_set_digit_step_direction"
         }
       },
@@ -2505,10 +2625,12 @@
           "c_type": "uint32_t"
         },
         "row_count": {
+          "computed": true,
           "set": "lv_table_set_row_count",
           "get": "lv_table_get_row_count"
         },
         "column_count": {
+          "computed": true,
           "set": "lv_table_set_column_count",
           "get": "lv_table_get_column_count"
         }
@@ -2549,21 +2671,27 @@
           "c_type": "lv_dir_t"
         },
         "tab_bar_position": {
+          "computed": true,
           "set": "lv_tabview_set_tab_bar_position"
         },
         "tab_bar_size": {
+          "computed": true,
           "set": "lv_tabview_set_tab_bar_size"
         },
         "tab_count": {
+          "computed": true,
           "get": "lv_tabview_get_tab_count"
         },
         "tab_active": {
+          "computed": true,
           "get": "lv_tabview_get_tab_active"
         },
         "content": {
+          "computed": true,
           "get": "lv_tabview_get_content"
         },
         "tab_bar": {
+          "computed": true,
           "get": "lv_tabview_get_tab_bar"
         }
       },
@@ -2594,6 +2722,7 @@
           "c_type": "lv_obj_t *"
         },
         "tile_active": {
+          "computed": true,
           "get": "lv_tileview_get_tile_active"
         }
       },
@@ -2622,9 +2751,11 @@
           "c_type": "lv_obj_t"
         },
         "header": {
+          "computed": true,
           "get": "lv_win_get_header"
         },
         "content": {
+          "computed": true,
           "get": "lv_win_get_content"
         }
       },
@@ -2700,6 +2831,7 @@
           "set": "lv_ime_pinyin_set_mode"
         },
         "keyboard": {
+          "computed": true,
           "set": "lv_ime_pinyin_set_keyboard"
         }
       },
@@ -2781,6 +2913,7 @@
           "c_type": "uint32_t"
         },
         "src": {
+          "computed": true,
           "set": "lv_gif_set_src"
         }
       },
@@ -2811,6 +2944,7 @@
           "set": "lv_qrcode_set_light_color"
         },
         "size": {
+          "computed": true,
           "set": "lv_qrcode_set_size"
         }
       },
@@ -2914,28 +3048,35 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "focus_cb": {
+          "computed": true,
           "set": "lv_group_set_focus_cb",
           "get": "lv_group_get_focus_cb"
         },
         "edge_cb": {
+          "computed": true,
           "set": "lv_group_set_edge_cb",
           "get": "lv_group_get_edge_cb"
         },
         "refocus_policy": {
+          "computed": true,
           "set": "lv_group_set_refocus_policy"
         },
         "editing": {
+          "computed": true,
           "set": "lv_group_set_editing",
           "get": "lv_group_get_editing"
         },
         "wrap": {
+          "computed": true,
           "set": "lv_group_set_wrap",
           "get": "lv_group_get_wrap"
         },
         "focused": {
+          "computed": true,
           "get": "lv_group_get_focused"
         },
         "obj_count": {
+          "computed": true,
           "get": "lv_group_get_obj_count"
         }
       },
@@ -2981,84 +3122,109 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "next": {
+          "computed": true,
           "get": "lv_display_get_next"
         },
         "rotation": {
+          "computed": true,
           "set": "lv_display_set_rotation",
           "get": "lv_display_get_rotation"
         },
         "dpi": {
+          "computed": true,
           "set": "lv_display_set_dpi",
           "get": "lv_display_get_dpi"
         },
         "horizontal_resolution": {
+          "computed": true,
           "get": "lv_display_get_horizontal_resolution"
         },
         "vertical_resolution": {
+          "computed": true,
           "get": "lv_display_get_vertical_resolution"
         },
         "physical_horizontal_resolution": {
+          "computed": true,
           "get": "lv_display_get_physical_horizontal_resolution"
         },
         "physical_vertical_resolution": {
+          "computed": true,
           "get": "lv_display_get_physical_vertical_resolution"
         },
         "offset_x": {
+          "computed": true,
           "get": "lv_display_get_offset_x"
         },
         "offset_y": {
+          "computed": true,
           "get": "lv_display_get_offset_y"
         },
         "render_mode": {
+          "computed": true,
           "set": "lv_display_set_render_mode"
         },
         "flush_cb": {
+          "computed": true,
           "set": "lv_display_set_flush_cb"
         },
         "flush_wait_cb": {
+          "computed": true,
           "set": "lv_display_set_flush_wait_cb"
         },
         "color_format": {
+          "computed": true,
           "set": "lv_display_set_color_format",
           "get": "lv_display_get_color_format"
         },
         "antialiasing": {
+          "computed": true,
           "set": "lv_display_set_antialiasing",
           "get": "lv_display_get_antialiasing"
         },
         "screen_active": {
+          "computed": true,
           "get": "lv_display_get_screen_active"
         },
         "screen_prev": {
+          "computed": true,
           "get": "lv_display_get_screen_prev"
         },
         "layer_top": {
+          "computed": true,
           "get": "lv_display_get_layer_top"
         },
         "layer_sys": {
+          "computed": true,
           "get": "lv_display_get_layer_sys"
         },
         "layer_bottom": {
+          "computed": true,
           "get": "lv_display_get_layer_bottom"
         },
         "event_count": {
+          "computed": true,
           "get": "lv_display_get_event_count"
         },
         "theme": {
+          "computed": true,
           "set": "lv_display_set_theme",
           "get": "lv_display_get_theme"
         },
         "inactive_time": {
+          "computed": true,
           "get": "lv_display_get_inactive_time"
         },
         "refr_timer": {
+          "computed": true,
           "get": "lv_display_get_refr_timer"
         },
         "user_data": {
+          "computed": true,
           "set": "lv_display_set_user_data",
           "get": "lv_display_get_user_data"
         },
         "driver_data": {
+          "computed": true,
           "set": "lv_display_set_driver_data",
           "get": "lv_display_get_driver_data"
         }
@@ -3166,61 +3332,78 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "next": {
+          "computed": true,
           "get": "lv_indev_get_next"
         },
         "type": {
+          "computed": true,
           "set": "lv_indev_set_type",
           "get": "lv_indev_get_type"
         },
         "read_cb": {
+          "computed": true,
           "set": "lv_indev_set_read_cb",
           "get": "lv_indev_get_read_cb"
         },
         "user_data": {
+          "computed": true,
           "set": "lv_indev_set_user_data",
           "get": "lv_indev_get_user_data"
         },
         "driver_data": {
+          "computed": true,
           "set": "lv_indev_set_driver_data",
           "get": "lv_indev_get_driver_data"
         },
         "state": {
+          "computed": true,
           "get": "lv_indev_get_state"
         },
         "group": {
+          "computed": true,
           "get": "lv_indev_get_group",
           "set": "lv_indev_set_group"
         },
         "display": {
+          "computed": true,
           "set": "lv_indev_set_display",
           "get": "lv_indev_get_display"
         },
         "cursor": {
+          "computed": true,
           "set": "lv_indev_set_cursor"
         },
         "button_points": {
+          "computed": true,
           "set": "lv_indev_set_button_points"
         },
         "gesture_dir": {
+          "computed": true,
           "get": "lv_indev_get_gesture_dir"
         },
         "key": {
+          "computed": true,
           "get": "lv_indev_get_key"
         },
         "scroll_dir": {
+          "computed": true,
           "get": "lv_indev_get_scroll_dir"
         },
         "scroll_obj": {
+          "computed": true,
           "get": "lv_indev_get_scroll_obj"
         },
         "read_timer": {
+          "computed": true,
           "get": "lv_indev_get_read_timer"
         },
         "mode": {
+          "computed": true,
           "set": "lv_indev_set_mode",
           "get": "lv_indev_get_mode"
         },
         "event_count": {
+          "computed": true,
           "get": "lv_indev_get_event_count"
         }
       },
@@ -3285,57 +3468,75 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "target": {
+          "computed": true,
           "get": "lv_event_get_target"
         },
         "current_target": {
+          "computed": true,
           "get": "lv_event_get_current_target"
         },
         "code": {
+          "computed": true,
           "get": "lv_event_get_code"
         },
         "param": {
+          "computed": true,
           "get": "lv_event_get_param"
         },
         "user_data": {
+          "computed": true,
           "get": "lv_event_get_user_data"
         },
         "current_target_obj": {
+          "computed": true,
           "get": "lv_event_get_current_target_obj"
         },
         "target_obj": {
+          "computed": true,
           "get": "lv_event_get_target_obj"
         },
         "indev": {
+          "computed": true,
           "get": "lv_event_get_indev"
         },
         "layer": {
+          "computed": true,
           "get": "lv_event_get_layer"
         },
         "old_size": {
+          "computed": true,
           "get": "lv_event_get_old_size"
         },
         "key": {
+          "computed": true,
           "get": "lv_event_get_key"
         },
         "scroll_anim": {
+          "computed": true,
           "get": "lv_event_get_scroll_anim"
         },
         "ext_draw_size": {
+          "computed": true,
           "set": "lv_event_set_ext_draw_size"
         },
         "self_size_info": {
+          "computed": true,
           "get": "lv_event_get_self_size_info"
         },
         "hit_test_info": {
+          "computed": true,
           "get": "lv_event_get_hit_test_info"
         },
         "cover_area": {
+          "computed": true,
           "get": "lv_event_get_cover_area"
         },
         "cover_res": {
+          "computed": true,
           "set": "lv_event_set_cover_res"
         },
         "draw_task": {
+          "computed": true,
           "get": "lv_event_get_draw_task"
         }
       },
@@ -3381,25 +3582,32 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "cb": {
+          "computed": true,
           "set": "lv_timer_set_cb"
         },
         "period": {
+          "computed": true,
           "set": "lv_timer_set_period"
         },
         "repeat_count": {
+          "computed": true,
           "set": "lv_timer_set_repeat_count"
         },
         "auto_delete": {
+          "computed": true,
           "set": "lv_timer_set_auto_delete"
         },
         "user_data": {
+          "computed": true,
           "set": "lv_timer_set_user_data",
           "get": "lv_timer_get_user_data"
         },
         "next": {
+          "computed": true,
           "get": "lv_timer_get_next"
         },
         "paused": {
+          "computed": true,
           "get": "lv_timer_get_paused"
         }
       },
@@ -3438,9 +3646,11 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "parent": {
+          "computed": true,
           "set": "lv_theme_set_parent"
         },
         "apply_cb": {
+          "computed": true,
           "set": "lv_theme_set_apply_cb"
         }
       },
@@ -3469,64 +3679,83 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "var": {
+          "computed": true,
           "set": "lv_anim_set_var"
         },
         "exec_cb": {
+          "computed": true,
           "set": "lv_anim_set_exec_cb"
         },
         "duration": {
+          "computed": true,
           "set": "lv_anim_set_duration"
         },
         "time": {
+          "computed": true,
           "set": "lv_anim_set_time",
           "get": "lv_anim_get_time"
         },
         "delay": {
+          "computed": true,
           "set": "lv_anim_set_delay",
           "get": "lv_anim_get_delay"
         },
         "custom_exec_cb": {
+          "computed": true,
           "set": "lv_anim_set_custom_exec_cb"
         },
         "path_cb": {
+          "computed": true,
           "set": "lv_anim_set_path_cb"
         },
         "start_cb": {
+          "computed": true,
           "set": "lv_anim_set_start_cb"
         },
         "get_value_cb": {
+          "computed": true,
           "set": "lv_anim_set_get_value_cb"
         },
         "completed_cb": {
+          "computed": true,
           "set": "lv_anim_set_completed_cb"
         },
         "deleted_cb": {
+          "computed": true,
           "set": "lv_anim_set_deleted_cb"
         },
         "playback_duration": {
+          "computed": true,
           "set": "lv_anim_set_playback_duration"
         },
         "playback_time": {
+          "computed": true,
           "set": "lv_anim_set_playback_time"
         },
         "playback_delay": {
+          "computed": true,
           "set": "lv_anim_set_playback_delay"
         },
         "repeat_count": {
+          "computed": true,
           "set": "lv_anim_set_repeat_count",
           "get": "lv_anim_get_repeat_count"
         },
         "repeat_delay": {
+          "computed": true,
           "set": "lv_anim_set_repeat_delay"
         },
         "early_apply": {
+          "computed": true,
           "set": "lv_anim_set_early_apply"
         },
         "user_data": {
+          "computed": true,
           "set": "lv_anim_set_user_data",
           "get": "lv_anim_get_user_data"
         },
         "playtime": {
+          "computed": true,
           "get": "lv_anim_get_playtime"
         }
       },
@@ -3590,9 +3819,11 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "line_height": {
+          "computed": true,
           "get": "lv_font_get_line_height"
         },
         "kerning": {
+          "computed": true,
           "set": "lv_font_set_kerning"
         }
       },
@@ -3621,21 +3852,27 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_types.h",
       "properties": {
         "next": {
+          "computed": true,
           "get": "lv_image_decoder_get_next"
         },
         "info_cb": {
+          "computed": true,
           "set": "lv_image_decoder_set_info_cb"
         },
         "open_cb": {
+          "computed": true,
           "set": "lv_image_decoder_set_open_cb"
         },
         "get_area_cb": {
+          "computed": true,
           "set": "lv_image_decoder_set_get_area_cb"
         },
         "close_cb": {
+          "computed": true,
           "set": "lv_image_decoder_set_close_cb"
         },
         "cache_free_cb": {
+          "computed": true,
           "set": "lv_image_decoder_set_cache_free_cb"
         }
       },
@@ -3775,14 +4012,17 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\lv_anim_timeline.h",
       "properties": {
         "reverse": {
+          "computed": true,
           "set": "lv_anim_timeline_set_reverse",
           "get": "lv_anim_timeline_get_reverse"
         },
         "progress": {
+          "computed": true,
           "set": "lv_anim_timeline_set_progress",
           "get": "lv_anim_timeline_get_progress"
         },
         "playtime": {
+          "computed": true,
           "get": "lv_anim_timeline_get_playtime"
         }
       },
@@ -3904,14 +4144,17 @@
           "c_type": "int32_t"
         },
         "width": {
+          "computed": true,
           "get": "lv_area_get_width",
           "set": "lv_area_set_width"
         },
         "height": {
+          "computed": true,
           "get": "lv_area_get_height",
           "set": "lv_area_set_height"
         },
         "size": {
+          "computed": true,
           "get": "lv_area_get_size"
         }
       },
@@ -4201,15 +4444,19 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\misc\\cache\\lv_cache_private.h",
       "properties": {
         "ref": {
+          "computed": true,
           "get": "lv_cache_entry_get_ref"
         },
         "node_size": {
+          "computed": true,
           "get": "lv_cache_entry_get_node_size"
         },
         "data": {
+          "computed": true,
           "get": "lv_cache_entry_get_data"
         },
         "cache": {
+          "computed": true,
           "get": "lv_cache_entry_get_cache"
         }
       },
@@ -4306,342 +4553,455 @@
           "c_type": "uint8_t"
         },
         "width": {
+          "computed": true,
           "set": "lv_style_set_width"
         },
         "min_width": {
+          "computed": true,
           "set": "lv_style_set_min_width"
         },
         "max_width": {
+          "computed": true,
           "set": "lv_style_set_max_width"
         },
         "height": {
+          "computed": true,
           "set": "lv_style_set_height"
         },
         "min_height": {
+          "computed": true,
           "set": "lv_style_set_min_height"
         },
         "max_height": {
+          "computed": true,
           "set": "lv_style_set_max_height"
         },
         "length": {
+          "computed": true,
           "set": "lv_style_set_length"
         },
         "x": {
+          "computed": true,
           "set": "lv_style_set_x"
         },
         "y": {
+          "computed": true,
           "set": "lv_style_set_y"
         },
         "align": {
+          "computed": true,
           "set": "lv_style_set_align"
         },
         "transform_width": {
+          "computed": true,
           "set": "lv_style_set_transform_width"
         },
         "transform_height": {
+          "computed": true,
           "set": "lv_style_set_transform_height"
         },
         "translate_x": {
+          "computed": true,
           "set": "lv_style_set_translate_x"
         },
         "translate_y": {
+          "computed": true,
           "set": "lv_style_set_translate_y"
         },
         "transform_scale_x": {
+          "computed": true,
           "set": "lv_style_set_transform_scale_x"
         },
         "transform_scale_y": {
+          "computed": true,
           "set": "lv_style_set_transform_scale_y"
         },
         "transform_rotation": {
+          "computed": true,
           "set": "lv_style_set_transform_rotation"
         },
         "transform_pivot_x": {
+          "computed": true,
           "set": "lv_style_set_transform_pivot_x"
         },
         "transform_pivot_y": {
+          "computed": true,
           "set": "lv_style_set_transform_pivot_y"
         },
         "transform_skew_x": {
+          "computed": true,
           "set": "lv_style_set_transform_skew_x"
         },
         "transform_skew_y": {
+          "computed": true,
           "set": "lv_style_set_transform_skew_y"
         },
         "pad_top": {
+          "computed": true,
           "set": "lv_style_set_pad_top"
         },
         "pad_bottom": {
+          "computed": true,
           "set": "lv_style_set_pad_bottom"
         },
         "pad_left": {
+          "computed": true,
           "set": "lv_style_set_pad_left"
         },
         "pad_right": {
+          "computed": true,
           "set": "lv_style_set_pad_right"
         },
         "pad_row": {
+          "computed": true,
           "set": "lv_style_set_pad_row"
         },
         "pad_column": {
+          "computed": true,
           "set": "lv_style_set_pad_column"
         },
         "margin_top": {
+          "computed": true,
           "set": "lv_style_set_margin_top"
         },
         "margin_bottom": {
+          "computed": true,
           "set": "lv_style_set_margin_bottom"
         },
         "margin_left": {
+          "computed": true,
           "set": "lv_style_set_margin_left"
         },
         "margin_right": {
+          "computed": true,
           "set": "lv_style_set_margin_right"
         },
         "bg_color": {
+          "computed": true,
           "set": "lv_style_set_bg_color"
         },
         "bg_opa": {
+          "computed": true,
           "set": "lv_style_set_bg_opa"
         },
         "bg_grad_color": {
+          "computed": true,
           "set": "lv_style_set_bg_grad_color"
         },
         "bg_grad_dir": {
+          "computed": true,
           "set": "lv_style_set_bg_grad_dir"
         },
         "bg_main_stop": {
+          "computed": true,
           "set": "lv_style_set_bg_main_stop"
         },
         "bg_grad_stop": {
+          "computed": true,
           "set": "lv_style_set_bg_grad_stop"
         },
         "bg_main_opa": {
+          "computed": true,
           "set": "lv_style_set_bg_main_opa"
         },
         "bg_grad_opa": {
+          "computed": true,
           "set": "lv_style_set_bg_grad_opa"
         },
         "bg_grad": {
+          "computed": true,
           "set": "lv_style_set_bg_grad"
         },
         "bg_image_src": {
+          "computed": true,
           "set": "lv_style_set_bg_image_src"
         },
         "bg_image_opa": {
+          "computed": true,
           "set": "lv_style_set_bg_image_opa"
         },
         "bg_image_recolor": {
+          "computed": true,
           "set": "lv_style_set_bg_image_recolor"
         },
         "bg_image_recolor_opa": {
+          "computed": true,
           "set": "lv_style_set_bg_image_recolor_opa"
         },
         "bg_image_tiled": {
+          "computed": true,
           "set": "lv_style_set_bg_image_tiled"
         },
         "border_color": {
+          "computed": true,
           "set": "lv_style_set_border_color"
         },
         "border_opa": {
+          "computed": true,
           "set": "lv_style_set_border_opa"
         },
         "border_width": {
+          "computed": true,
           "set": "lv_style_set_border_width"
         },
         "border_side": {
+          "computed": true,
           "set": "lv_style_set_border_side"
         },
         "border_post": {
+          "computed": true,
           "set": "lv_style_set_border_post"
         },
         "outline_width": {
+          "computed": true,
           "set": "lv_style_set_outline_width"
         },
         "outline_color": {
+          "computed": true,
           "set": "lv_style_set_outline_color"
         },
         "outline_opa": {
+          "computed": true,
           "set": "lv_style_set_outline_opa"
         },
         "outline_pad": {
+          "computed": true,
           "set": "lv_style_set_outline_pad"
         },
         "shadow_width": {
+          "computed": true,
           "set": "lv_style_set_shadow_width"
         },
         "shadow_offset_x": {
+          "computed": true,
           "set": "lv_style_set_shadow_offset_x"
         },
         "shadow_offset_y": {
+          "computed": true,
           "set": "lv_style_set_shadow_offset_y"
         },
         "shadow_spread": {
+          "computed": true,
           "set": "lv_style_set_shadow_spread"
         },
         "shadow_color": {
+          "computed": true,
           "set": "lv_style_set_shadow_color"
         },
         "shadow_opa": {
+          "computed": true,
           "set": "lv_style_set_shadow_opa"
         },
         "image_opa": {
+          "computed": true,
           "set": "lv_style_set_image_opa"
         },
         "image_recolor": {
+          "computed": true,
           "set": "lv_style_set_image_recolor"
         },
         "image_recolor_opa": {
+          "computed": true,
           "set": "lv_style_set_image_recolor_opa"
         },
         "line_width": {
+          "computed": true,
           "set": "lv_style_set_line_width"
         },
         "line_dash_width": {
+          "computed": true,
           "set": "lv_style_set_line_dash_width"
         },
         "line_dash_gap": {
+          "computed": true,
           "set": "lv_style_set_line_dash_gap"
         },
         "line_rounded": {
+          "computed": true,
           "set": "lv_style_set_line_rounded"
         },
         "line_color": {
+          "computed": true,
           "set": "lv_style_set_line_color"
         },
         "line_opa": {
+          "computed": true,
           "set": "lv_style_set_line_opa"
         },
         "arc_width": {
+          "computed": true,
           "set": "lv_style_set_arc_width"
         },
         "arc_rounded": {
+          "computed": true,
           "set": "lv_style_set_arc_rounded"
         },
         "arc_color": {
+          "computed": true,
           "set": "lv_style_set_arc_color"
         },
         "arc_opa": {
+          "computed": true,
           "set": "lv_style_set_arc_opa"
         },
         "arc_image_src": {
+          "computed": true,
           "set": "lv_style_set_arc_image_src"
         },
         "text_color": {
+          "computed": true,
           "set": "lv_style_set_text_color"
         },
         "text_opa": {
+          "computed": true,
           "set": "lv_style_set_text_opa"
         },
         "text_font": {
+          "computed": true,
           "set": "lv_style_set_text_font"
         },
         "text_letter_space": {
+          "computed": true,
           "set": "lv_style_set_text_letter_space"
         },
         "text_line_space": {
+          "computed": true,
           "set": "lv_style_set_text_line_space"
         },
         "text_decor": {
+          "computed": true,
           "set": "lv_style_set_text_decor"
         },
         "text_align": {
+          "computed": true,
           "set": "lv_style_set_text_align"
         },
         "radius": {
+          "computed": true,
           "set": "lv_style_set_radius"
         },
         "clip_corner": {
+          "computed": true,
           "set": "lv_style_set_clip_corner"
         },
         "opa": {
+          "computed": true,
           "set": "lv_style_set_opa"
         },
         "opa_layered": {
+          "computed": true,
           "set": "lv_style_set_opa_layered"
         },
         "color_filter_dsc": {
+          "computed": true,
           "set": "lv_style_set_color_filter_dsc"
         },
         "color_filter_opa": {
+          "computed": true,
           "set": "lv_style_set_color_filter_opa"
         },
         "anim": {
+          "computed": true,
           "set": "lv_style_set_anim"
         },
         "anim_duration": {
+          "computed": true,
           "set": "lv_style_set_anim_duration"
         },
         "transition": {
+          "computed": true,
           "set": "lv_style_set_transition"
         },
         "blend_mode": {
+          "computed": true,
           "set": "lv_style_set_blend_mode"
         },
         "layout": {
+          "computed": true,
           "set": "lv_style_set_layout"
         },
         "base_dir": {
+          "computed": true,
           "set": "lv_style_set_base_dir"
         },
         "flex_flow": {
+          "computed": true,
           "set": "lv_style_set_flex_flow"
         },
         "flex_main_place": {
+          "computed": true,
           "set": "lv_style_set_flex_main_place"
         },
         "flex_cross_place": {
+          "computed": true,
           "set": "lv_style_set_flex_cross_place"
         },
         "flex_track_place": {
+          "computed": true,
           "set": "lv_style_set_flex_track_place"
         },
         "flex_grow": {
+          "computed": true,
           "set": "lv_style_set_flex_grow"
         },
         "grid_column_dsc_array": {
+          "computed": true,
           "set": "lv_style_set_grid_column_dsc_array"
         },
         "grid_column_align": {
+          "computed": true,
           "set": "lv_style_set_grid_column_align"
         },
         "grid_row_dsc_array": {
+          "computed": true,
           "set": "lv_style_set_grid_row_dsc_array"
         },
         "grid_row_align": {
+          "computed": true,
           "set": "lv_style_set_grid_row_align"
         },
         "grid_cell_column_pos": {
+          "computed": true,
           "set": "lv_style_set_grid_cell_column_pos"
         },
         "grid_cell_x_align": {
+          "computed": true,
           "set": "lv_style_set_grid_cell_x_align"
         },
         "grid_cell_column_span": {
+          "computed": true,
           "set": "lv_style_set_grid_cell_column_span"
         },
         "grid_cell_row_pos": {
+          "computed": true,
           "set": "lv_style_set_grid_cell_row_pos"
         },
         "grid_cell_y_align": {
+          "computed": true,
           "set": "lv_style_set_grid_cell_y_align"
         },
         "grid_cell_row_span": {
+          "computed": true,
           "set": "lv_style_set_grid_cell_row_span"
         },
         "pad_all": {
+          "computed": true,
           "set": "lv_style_set_pad_all"
         },
         "pad_hor": {
+          "computed": true,
           "set": "lv_style_set_pad_hor"
         },
         "pad_ver": {
+          "computed": true,
           "set": "lv_style_set_pad_ver"
         },
         "pad_gap": {
+          "computed": true,
           "set": "lv_style_set_pad_gap"
         },
         "transform_scale": {
+          "computed": true,
           "set": "lv_style_set_transform_scale"
         }
       },
@@ -5591,9 +5951,11 @@
           "c_type": "uint32_t"
         },
         "text": {
+          "computed": true,
           "set": "lv_span_set_text"
         },
         "text_static": {
+          "computed": true,
           "set": "lv_span_set_text_static"
         }
       },
@@ -5626,9 +5988,11 @@
       "file": "D:\\sandbox\\iSEW\\lvgl\\src\\others\\observer\\lv_observer.h",
       "properties": {
         "target": {
+          "computed": true,
           "get": "lv_observer_get_target"
         },
         "target_obj": {
+          "computed": true,
           "get": "lv_observer_get_target_obj"
         }
       },
@@ -5666,30 +6030,38 @@
           "c_type": "void *"
         },
         "int": {
+          "computed": true,
           "set": "lv_subject_set_int",
           "get": "lv_subject_get_int"
         },
         "previous_int": {
+          "computed": true,
           "get": "lv_subject_get_previous_int"
         },
         "string": {
+          "computed": true,
           "get": "lv_subject_get_string"
         },
         "previous_string": {
+          "computed": true,
           "get": "lv_subject_get_previous_string"
         },
         "pointer": {
+          "computed": true,
           "set": "lv_subject_set_pointer",
           "get": "lv_subject_get_pointer"
         },
         "previous_pointer": {
+          "computed": true,
           "get": "lv_subject_get_previous_pointer"
         },
         "color": {
+          "computed": true,
           "set": "lv_subject_set_color",
           "get": "lv_subject_get_color"
         },
         "previous_color": {
+          "computed": true,
           "get": "lv_subject_get_previous_color"
         }
       },
