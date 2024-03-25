@@ -17,6 +17,7 @@ class Parser :
         )
     Cache           = \
         { "Types"        : {}
+        , "Structs"      : {}
         , "Enums"        : {}
         , "Variables"    : {}
         , "Functions"    : {}
@@ -24,6 +25,7 @@ class Parser :
         , "Class_Base"   : {}
         , "Classes"      : {}
         }
+    Struct_Forward_Decl  = {}
 
     def __init__ (self, lvgl_api, * files) :
         self.files       = []
@@ -45,6 +47,11 @@ class Parser :
                         else :
                             print (f"No handler for {hname}")
             self._find_widgets ()
+        Types   = self.Cache ["Types"]
+        Structs = self.Cache ["Structs"]
+        for tn, sn in self.Struct_Forward_Decl.items () :
+            if tn in Types and sn in Structs :
+                Types [tn] ["Struct_Fields"] = Structs [sn] ["Struct_Fields"]
         self._identify_classes             ()                
         self._assign_functions_to_classes  ()
         self._check_enums                  ()
@@ -320,6 +327,13 @@ class Parser :
             self._handle_Enum (node)
         elif isinstance (node.type, c_ast.Union) :
             self._handle_Union (node)
+        elif isinstance (node.type, c_ast.Struct) :
+            if node.type.decls :
+                SF = self._get_struct_fields (node.type)
+                self.Cache ["Structs"] [node.type.name] = \
+                    { "name"          : node.type.name
+                    , "Struct_Fields" : SF
+                    }
     # end def _handle_Decl
 
     def _handle_Typedef (self, node) :
@@ -333,23 +347,10 @@ class Parser :
             Is_Function         = {}
             #real_type           = Key
             if type and isinstance (type, c_ast.Struct) :
-                for d in type.decls or () :
-                    fname    = d.name
-                    if (   isinstance (d.type,      c_ast.PtrDecl)
-                       and isinstance (d.type.type, c_ast.FuncDecl)
-                       ) :
-                        ft       = d.type.type
-                        args     = self._get_function_args (ft)
-                        ftype    = { "return_type" : self.Gen.visit (ft.type)
-                                   , "args"        : args
-                                   }
-                    elif (   isinstance (d.type.type, c_ast.Union)
-                         ) :
-                        self._handle_Union (d.type)
-                        ftype = {"Is_Union" : d.type.type.name}
-                    else :
-                        ftype    = self.Gen.visit (d.type)
-                    SF [fname] = ftype
+                SF              = self._get_struct_fields (type)
+                if not SF :
+                    if "fake_libc_include" not in node.coord.file :
+                        self.Struct_Forward_Decl [Key] = type.name
             if type and isinstance (type, c_ast.Enum) :
                 self._handle_Enum (node.type)
             if type and isinstance (type, c_ast.Union) :
@@ -378,6 +379,28 @@ class Parser :
         return self.Cache ["Types"] [Key]
     # end def _handle_Typedef
 
+    def _get_struct_fields (self, type) :
+        SF = {}
+        for d in type.decls or () :
+            fname    = d.name
+            if (    isinstance (d.type,      c_ast.PtrDecl)
+                and isinstance (d.type.type, c_ast.FuncDecl)
+                ) :
+                ft       = d.type.type
+                args     = self._get_function_args (ft)
+                ftype    = { "return_type" : self.Gen.visit (ft.type)
+                            , "args"        : args
+                            }
+            elif (   isinstance (d.type.type, c_ast.Union)
+                    ) :
+                self._handle_Union (d.type)
+                ftype  = {"Is_Union" : d.type.type.name}
+            else :
+                ftype  = self.Gen.visit (d.type)
+            SF [fname] = ftype
+        return SF
+    # end def _get_struct_fields
+    
     def _get_function_args (self, ftype) :
         args = {}
         for i, arg in enumerate (ftype.args or ()) :
