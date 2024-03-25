@@ -53,7 +53,7 @@ class Parser :
     def _identify_classes (self) :
         Classes = self.Cache ["Classes"]
         for t in self.Cache ["Types"].values () :
-            if t ["Is_Struct"] :
+            if t ["Is_Struct"] and "fake_libc_include" not in t ["file"] :
                 name        = t ["name"]
                 widget_name = name [3:-2]
                 if widget_name not in Classes :
@@ -182,9 +182,10 @@ class Parser :
     # end def _assign_functions_to_classes
 
     def _check_enums (self) :
-        Enums       = self.Cache ["Enums"]
-        Types       = self.Cache ["Types"]
-        Classes     = self.Cache ["Classes"]
+        value_replace   = {}
+        Enums           = self.Cache ["Enums"]
+        Types           = self.Cache ["Types"]
+        Classes         = self.Cache ["Classes"]
         for tn, tspec in Types.items () :
             espec = Enums.get (tn)
             if espec :
@@ -213,7 +214,7 @@ class Parser :
                     cspec           = Classes [class_name]
                 cspec.setdefault ("enums", []).append (en)
             espec ["part_of"]       = class_name
-            values = {}
+            values    = {}
             for n, v in espec ["values"].items () :
                 if not n.startswith ("_") :
                     values [n] = v
@@ -221,10 +222,18 @@ class Parser :
                 for n, v in espec ["values"].items () :
                     if n.startswith ("_") :
                         values [n] = v
-            en = os.path.commonprefix (tuple (values.keys ())).strip ("_") [3:]
+            en = os.path.commonprefix (tuple (values.keys ())).lstrip ("_") [3:]
             if not en :
                 en = en.strip ("_") [3:-2].upper ()
-            py_name = en
+            else :
+                #fn = next (iter (values.keys ()))
+                if not en.endswith ("_") :
+                    en = en.rsplit ("_") [0]
+                else :
+                    en = en [:-1]
+            py_name      = en
+            short_values = {}
+            ori2short    = {}
             if class_name and class_name.endswith ("_t") :
                 class_name = class_name [:-2]
             if class_name and en.startswith (class_name.upper ()) :
@@ -233,7 +242,44 @@ class Parser :
                     if py_name :
                         en = en [:-1-len (py_name)]
                     py_name = ""
+                if not py_name :
+                    strip_len    = len (class_name) + 4
+                    for n,v in values.items () :
+                        short_values [n [strip_len:]] = v
+                    if len (values) > 1 :
+                        split_key = f"{py_name}_"
+                        for n,v in values.items () :
+                            short           = n.split (split_key) [1]
+                            short_values [short] = v
+                            ori2short    [n]     = short
+                    else :
+                        short_values = values
+            if py_name :
+                if len (values) > 1 : 
+                    split_key = f"{py_name}_"
+                    for n,v in values.items () :
+                        short                = n.split (split_key) [1]
+                        short_values [short] = v
+                        ori2short    [n]     = short
+                else :
+                    short_values = values
             espec ["common_after_class_name"] = py_name
+            espec ["orig_values"]             = espec ["values"]
+            if ori2short :
+                p = re.compile ("(%s)" % ("|".join (ori2short.keys ()), ))
+                for n, ov in short_values.items () :
+                    short_values [n] = p.sub \
+                        (lambda m : ori2short [m.group (1)], str (ov))
+            values = {}
+            for n, v in short_values.items () :
+                if str (n) [0].isdigit () :
+                    n = f"_{n}"
+                if str (v).startswith ("1L << ") :
+                    v = v.replace ("1L << ", "1 << ")
+                if str (v).startswith ("0x") and str (v).endswith ("U") :
+                    v = v [:-1]
+                values [n] = v
+            espec ["values"]                  = values
     # end def _check_enums
 
     def save_cache (self, file_name) :
@@ -260,7 +306,8 @@ class Parser :
 
     def _store_item (self, kind, key, node, ** data) :
         data ["file"] = str (Path (node.coord.file).resolve ())
-        self.Cache [kind] [key] = data
+        if "fake_libc_include" not in data ["file"] :
+            self.Cache [kind] [key] = data
         return data
     # end def _store_item
 
