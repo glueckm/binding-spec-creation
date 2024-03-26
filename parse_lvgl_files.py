@@ -178,10 +178,19 @@ class Parser :
                     if   (len (args) == 1) and  f.startswith (fget) :
                         if n not in props :
                             props [n] = {"computed" : True}
+                        c_type = fspec ["return_type"]
+                        if "c_type" not in props [n] :
+                            props [n] ["c_type"] = c_type
+                        #else :
+                        #    if props [n] ["c_type"] != c_type :
+                        #        raise ValueError ("Different c_types")
                         props [n] ["get"] = f
                     elif (len (args) == 2) and  f.startswith (fset) :
                         if n not in props :
                             props [n] = {"computed" : True}
+                        c_type = tuple (args.values ()) [1]
+                        if "c_type" not in props [n] :
+                            props [n] ["c_type"] = c_type
                         props [n] ["set"] = f
                 if f.endswith ("_create") :
                     cspec ["constructor"] = f
